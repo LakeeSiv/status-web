@@ -15,4 +15,8 @@ app.get("/api", (req, res) => {
   });
 });
 
+app.use((req, res) => {
+  res.status(404).json({ error: "page does not exist" });
+});
+
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
