@@ -14,17 +14,7 @@ const db = new sqlite3.Database(DBSOURCE, (err) => {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             message TEXT, 
             alert INT 
-            )`,
-      (err) => {
-        if (err) {
-          console.log("Table already created");
-          console.log(err);
-        } else {
-          console.log("Inserting");
-          var insert = "INSERT INTO status (message, alert) VALUES (?,?)";
-          db.run(insert, ["hi 1", 1]);
-        }
-      }
+            )`
     );
   }
 });
