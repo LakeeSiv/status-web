@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import db from "./database";
 import { config } from "dotenv";
+import updatedb from "./updatedb";
 config();
 
 const app: Application = express();
@@ -23,6 +24,7 @@ app.post("/api", (req: Request, res: Response) => {
 
   if (pass === process.env.PASS) {
     res.status(200).end("Success");
+    updatedb("hmm", 2);
   } else {
     res.status(401).end("Failed");
   }
