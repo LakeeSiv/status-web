@@ -4,6 +4,7 @@ import { config } from "dotenv";
 config();
 
 const app: Application = express();
+app.use(express.json());
 const PORT: number | string = process.env.PORT || 5000;
 
 app.get("/api", (req: Request, res: Response) => {
@@ -19,7 +20,12 @@ app.get("/api", (req: Request, res: Response) => {
 
 app.post("/api", (req: Request, res: Response) => {
   const pass: string = req.body.pass;
-  console.log(pass);
+
+  if (pass === process.env.PASS) {
+    res.status(200).end("Success");
+  } else {
+    res.status(401).end("Failed");
+  }
 });
 
 app.use((req: Request, res: Response) => {
