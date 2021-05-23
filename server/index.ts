@@ -6,7 +6,7 @@ import updatedb from "./updatedb";
 config();
 
 const app: Application = express();
-app.use(cors);
+app.use(cors());
 app.use(express.json());
 const PORT: number | string = process.env.PORT || 5000;
 
