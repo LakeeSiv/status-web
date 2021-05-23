@@ -21,10 +21,12 @@ app.get("/api", (req: Request, res: Response) => {
 
 app.post("/api", (req: Request, res: Response) => {
   const pass: string = req.body.pass;
+  const message: string = req.body.message;
+  const alert: number = req.body.alert;
 
   if (pass === process.env.PASS) {
     res.status(200).end("Success");
-    updatedb("hmm", 2);
+    updatedb(message, alert);
   } else {
     res.status(401).end("Failed");
   }
