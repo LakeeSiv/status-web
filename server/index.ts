@@ -1,10 +1,12 @@
 import express, { Application, Request, Response } from "express";
+import cors from "cors";
 import db from "./database";
 import { config } from "dotenv";
 import updatedb from "./updatedb";
 config();
 
 const app: Application = express();
+app.use(cors);
 app.use(express.json());
 const PORT: number | string = process.env.PORT || 5000;
 
