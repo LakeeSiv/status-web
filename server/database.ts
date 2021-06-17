@@ -25,7 +25,7 @@ const getData = async () => {
   try {
     const response = await pool.query(`SELECT * from status`);
     const data: object = response.rows[0];
-    pool.end();
+    // pool.end();
     return data;
   } catch (error) {
     throw error;
