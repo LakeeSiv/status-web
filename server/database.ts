@@ -6,14 +6,20 @@ const connectionString: string = process.env.URI as string;
 
 const pool: Pool = new Pool({ connectionString });
 
-// pool.query(
-//   `INSERT INTO status (id, message, alert) VALUES ($1,$2, $3)`,
-//   [1, "1", 2],
-//   (err, res) => {
-//     console.log(err, res);
-//     pool.end();
-//   }
-// );
+const updateData = async (message: string, alert: number) => {
+  try {
+    await pool
+      .query(`UPDATE status SET message = $1, alert = $2 WHERE id = 1`, [
+        message,
+        alert,
+      ])
+      .then(() => {
+        console.log("inserted");
+      });
+  } catch (error) {
+    throw error;
+  }
+};
 
 const getData = async () => {
   try {
@@ -26,9 +32,4 @@ const getData = async () => {
   }
 };
 
-const main = async () => {
-  var a = await getData();
-  console.log(a);
-};
-
-main();
+export { getData, updateData };
