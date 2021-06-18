@@ -1,4 +1,4 @@
-import { Heading } from "@chakra-ui/layout";
+import { Text } from "@chakra-ui/layout";
 import React from "react";
 import { useState, useEffect } from "react";
 import { getStatus } from "../api/api";
@@ -16,12 +16,16 @@ const Header: React.FC = () => {
   }, []);
   return (
     <div>
+      <ThemePicker />
       <VStack>
-        <ThemePicker />
         <Box>
-          <Heading>
-            {status}, {alert}
-          </Heading>
+          <Text
+            fontSize="4xl"
+            fontWeight="bold"
+            color={"red." + alert * 3 + "00"}
+          >
+            Currently : {status}, {alert}
+          </Text>
         </Box>
       </VStack>
     </div>
