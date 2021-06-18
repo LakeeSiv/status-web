@@ -5,7 +5,7 @@ interface status {
   alert: number;
 }
 
-const link: string = process.env.LINK as string;
+const link: string = process.env.REACT_APP_LINK as string;
 
 const getStatus = async (): Promise<status> => {
   const status: status = await (await fetch(link)).json();
