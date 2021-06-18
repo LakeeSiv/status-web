@@ -1,6 +1,12 @@
 import fetch from "node-fetch";
-const getStatus = async () => {
-  const status = await (
+interface status {
+  id: number;
+  message: string;
+  alert: number;
+}
+
+const getStatus = async (): Promise<status> => {
+  const status: status = await (
     await fetch("https://status-web.lakeesiv.repl.co/api")
   ).json();
   return status;
