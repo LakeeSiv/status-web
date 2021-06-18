@@ -5,7 +5,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 const ThemePicker: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Box textAlign="right" py={4} mr={12}>
+    <Box textAlign="right" py={5} mr={{ base: 5, lg: 10 }}>
       <IconButton
         aria-label="hi"
         colorScheme={colorMode}
