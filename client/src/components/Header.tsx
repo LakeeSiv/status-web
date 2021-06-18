@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { getStatus } from "../api/api";
 import { VStack, Box } from "@chakra-ui/react";
+import ThemePicker from "./ThemePicker";
 const Header: React.FC = () => {
   const [status, setStatus] = useState("");
   const [alert, setAlert] = useState(0);
@@ -16,7 +17,7 @@ const Header: React.FC = () => {
   return (
     <div>
       <VStack>
-        <Box></Box>
+        <ThemePicker />
         <Box>
           <Heading>
             {status}, {alert}
