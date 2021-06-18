@@ -2,7 +2,7 @@ import { Heading } from "@chakra-ui/layout";
 import React from "react";
 import { useState, useEffect } from "react";
 import { getStatus } from "../api/api";
-
+import { VStack, Box } from "@chakra-ui/react";
 const Header: React.FC = () => {
   const [status, setStatus] = useState("");
   const [alert, setAlert] = useState(0);
@@ -15,9 +15,14 @@ const Header: React.FC = () => {
   }, []);
   return (
     <div>
-      <Heading>
-        {status}, {alert}
-      </Heading>
+      <VStack>
+        <Box></Box>
+        <Box>
+          <Heading>
+            {status}, {alert}
+          </Heading>
+        </Box>
+      </VStack>
     </div>
   );
 };
