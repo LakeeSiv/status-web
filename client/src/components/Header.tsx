@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { getStatus } from "../api/api";
 
-const Header = () => {
+const Header: React.FC = () => {
   const [status, setStatus] = useState("");
 
   useEffect(() => {
