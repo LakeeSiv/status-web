@@ -5,16 +5,16 @@ interface status {
   alert: number;
 }
 
+const link: string = process.env.LINK as string;
+
 const getStatus = async (): Promise<status> => {
-  const status: status = await (
-    await fetch("https://status-web.lakeesiv.repl.co/api")
-  ).json();
+  const status: status = await (await fetch(link)).json();
   return status;
 };
 
 const postStatus = async (message: string, alert: number) => {
   const body: object = { pass: "a", message: message, alert: alert };
-  await fetch("https://status-web.lakeesiv.repl.co/api", {
+  await fetch(link, {
     method: "POST",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
