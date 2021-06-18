@@ -11,6 +11,7 @@ const PORT: number | string = process.env.PORT || 5000;
 
 app.get("/api", async (req: Request, res: Response) => {
   const data: object = await getData();
+  console.log("Get request was made");
   res.json(data);
 });
 
