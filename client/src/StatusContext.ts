@@ -11,6 +11,9 @@ interface status {
   alert: number;
 }
 
-const StatusContext = createContext<HookType | null>(null);
+const StatusContext = createContext<HookType>({
+  status: { id: 1, message: "Unknown", alert: 0 },
+  setStatus: () => {},
+});
 
 export default StatusContext;
