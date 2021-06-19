@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch, { Response } from "node-fetch";
 interface status {
   id: number;
   message: string;
@@ -18,12 +18,13 @@ const getStatus = async (): Promise<status> => {
   return status;
 };
 
-const postStatus = async (body: PostObj) => {
-  await fetch(link, {
+const postStatus = async (body: PostObj): Promise<boolean> => {
+  const response: Response = await fetch(link, {
     method: "POST",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
   });
+  return response.statusText === "OK" ? true : false;
 };
 
 export { getStatus, postStatus };
