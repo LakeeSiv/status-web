@@ -8,6 +8,7 @@ import {
   Radio,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import { postStatus } from "../api/api";
 
 interface Data {
   message: string;
@@ -19,6 +20,7 @@ const Form: React.FC = () => {
   const [alert, setAlert] = useState("1");
   const Submit = (data: Data) => {
     data.alert = parseInt(alert);
+    postStatus(data);
     console.log(data);
   };
   return (
