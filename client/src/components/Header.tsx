@@ -1,19 +1,20 @@
 import { Text } from "@chakra-ui/layout";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { getStatus } from "../api/api";
 import { VStack, Box, useColorMode } from "@chakra-ui/react";
 import ThemePicker from "./ThemePicker";
+import StatusContext from "../StatusContext";
 
 const Header: React.FC = () => {
-  const [status, setStatus] = useState({ id: 1, message: "Unknown", alert: 0 });
+  const { status, setStatus } = useContext(StatusContext);
   const { colorMode } = useColorMode();
 
   useEffect(() => {
     getStatus().then((status) => {
       setStatus(status);
     });
-  }, []);
+  }, [setStatus]);
   return (
     <div>
       <ThemePicker />
