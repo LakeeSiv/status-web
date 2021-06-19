@@ -19,10 +19,10 @@ interface Data {
 const Form: React.FC = () => {
   const { register, handleSubmit } = useForm();
   const [alert, setAlert] = useState("1");
-  const Submit = (data: Data) => {
+  const Submit = async (data: Data) => {
     data.alert = parseInt(alert);
-    postStatus(data);
-    console.log(data);
+    const success: boolean = await postStatus(data);
+    console.log(success);
   };
   return (
     <form onSubmit={handleSubmit(Submit)}>
