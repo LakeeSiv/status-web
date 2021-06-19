@@ -13,6 +13,7 @@ import { postStatus } from "../api/api";
 interface Data {
   message: string;
   alert: number;
+  pass: string;
 }
 
 const Form: React.FC = () => {
@@ -31,6 +32,13 @@ const Form: React.FC = () => {
           id="messsage"
           placeholder="message"
           {...register("message")}
+        />{" "}
+        <Input
+          width="50vw"
+          id="pass"
+          type="password"
+          placeholder="password"
+          {...register("pass")}
         />
         <RadioGroup onChange={setAlert} value={alert}>
           <Stack direction="row" spacing={10}>
