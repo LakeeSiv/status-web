@@ -32,7 +32,7 @@ const Form: React.FC = () => {
           id="messsage"
           placeholder="message"
           {...register("message")}
-        />{" "}
+        />
         <Input
           width="50vw"
           id="pass"
