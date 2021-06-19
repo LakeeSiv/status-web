@@ -6,14 +6,12 @@ import { VStack, Box, useColorMode } from "@chakra-ui/react";
 import ThemePicker from "./ThemePicker";
 
 const Header: React.FC = () => {
-  const [status, setStatus] = useState("");
-  const [alert, setAlert] = useState(0);
+  const [status, setStatus] = useState({ id: 1, message: "Unknown", alert: 0 });
   const { colorMode } = useColorMode();
 
   useEffect(() => {
     getStatus().then((status) => {
-      setStatus(status.message);
-      setAlert(status.alert);
+      setStatus(status);
     });
   }, []);
   return (
@@ -26,11 +24,11 @@ const Header: React.FC = () => {
             fontWeight="bold"
             color={
               colorMode === "dark"
-                ? "red." + alert * 2 + "00"
-                : "pink." + alert * 2 + "00"
+                ? "red." + status.alert * 2 + "00"
+                : "pink." + status.alert * 2 + "00"
             }
           >
-            Currently : {status}, {alert}
+            Currently : {status.message}, {status.alert}
           </Text>
         </Box>
       </VStack>
