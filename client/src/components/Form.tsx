@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Input,
   Button,
@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { postStatus } from "../api/api";
+import StatusContext, { status } from "../StatusContext";
 
 interface Data {
   message: string;
@@ -19,10 +20,16 @@ interface Data {
 const Form: React.FC = () => {
   const { register, handleSubmit } = useForm();
   const [alert, setAlert] = useState("1");
+  const { setStatus } = useContext(StatusContext);
   const Submit = async (data: Data) => {
     data.alert = parseInt(alert);
     const success: boolean = await postStatus(data);
     console.log(success);
+    const status: status = { id: 1, message: data.message, alert: data.alert };
+    if (success) {
+      setStatus(status);
+      console.log("status", status);
+    }
   };
   return (
     <form onSubmit={handleSubmit(Submit)}>
