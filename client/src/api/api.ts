@@ -19,7 +19,6 @@ const getStatus = async (): Promise<status> => {
 };
 
 const postStatus = async (body: PostObj) => {
-  body.pass = "a";
   await fetch(link, {
     method: "POST",
     body: JSON.stringify(body),
