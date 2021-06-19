@@ -24,7 +24,8 @@ const postStatus = async (body: PostObj): Promise<boolean> => {
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
   });
-  return response.statusText === "OK" ? true : false;
+
+  return response.ok;
 };
 
 export { getStatus, postStatus };
