@@ -39,7 +39,7 @@ const Form: React.FC = () => {
             <Radio value="5">5</Radio>
           </Stack>
         </RadioGroup>
-        <Button type="submit"></Button>
+        <Button type="submit">Submit</Button>
       </VStack>
     </form>
   );
