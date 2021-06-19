@@ -5,7 +5,7 @@ interface HookType {
   setStatus: React.Dispatch<SetStateAction<status>>;
 }
 
-interface status {
+export interface status {
   id: number;
   message: string;
   alert: number;
