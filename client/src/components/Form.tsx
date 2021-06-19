@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Input,
   Button,
-  Box,
   VStack,
   RadioGroup,
   Stack,
@@ -10,11 +9,20 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
+interface Data {
+  message: string;
+  alert: number;
+}
+
 const Form: React.FC = () => {
   const { register, handleSubmit } = useForm();
   const [alert, setAlert] = useState("1");
+  const Submit = (data: Data) => {
+    data.alert = parseInt(alert);
+    console.log(data);
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit(Submit)}>
       <VStack spacing={4} pt={4}>
         <Input
           width="50vw"
@@ -31,6 +39,7 @@ const Form: React.FC = () => {
             <Radio value="5">5</Radio>
           </Stack>
         </RadioGroup>
+        <Button type="submit"></Button>
       </VStack>
     </form>
   );
