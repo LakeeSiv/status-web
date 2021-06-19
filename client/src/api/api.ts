@@ -5,6 +5,12 @@ interface status {
   alert: number;
 }
 
+interface PostObj {
+  message: string;
+  alert: number;
+  pass?: string;
+}
+
 const link: string = process.env.REACT_APP_LINK as string;
 
 const getStatus = async (): Promise<status> => {
@@ -12,8 +18,8 @@ const getStatus = async (): Promise<status> => {
   return status;
 };
 
-const postStatus = async (message: string, alert: number) => {
-  const body: object = { pass: "a", message: message, alert: alert };
+const postStatus = async (body: PostObj) => {
+  body.pass = "a";
   await fetch(link, {
     method: "POST",
     body: JSON.stringify(body),
