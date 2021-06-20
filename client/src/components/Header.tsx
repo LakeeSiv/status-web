@@ -17,7 +17,6 @@ const Header: React.FC = () => {
   }, [setStatus]);
   return (
     <div>
-      <ThemePicker />
       <VStack>
         <Box>
           <Text
