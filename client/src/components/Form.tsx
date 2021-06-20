@@ -11,6 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { postStatus } from "../api/api";
 import StatusContext, { status } from "../StatusContext";
+import useDidMountEffect from "../useDidMountEffect";
 
 interface Data {
   message: string;
@@ -23,9 +24,10 @@ const Form: React.FC = () => {
   const [alert, setAlert] = useState("1");
   const { setStatus } = useContext(StatusContext);
   const [success, setSuccess] = useState<boolean>(false);
+  const [counter, setCounter] = useState(0);
   const toast = useToast();
 
-  const Toast = () => {
+  const Toast = async () => {
     if (success) {
       return toast({
         title: "Success",
@@ -48,11 +50,17 @@ const Form: React.FC = () => {
     const success: boolean = await postStatus(data);
 
     setSuccess(success);
+    setCounter(counter + 1);
     const status: status = { id: 1, message: data.message, alert: data.alert };
     if (success) {
       setStatus(status);
     }
   };
+
+  useDidMountEffect(() => {
+    Toast();
+    // es-l
+  }, [counter]);
 
   return (
     <form onSubmit={handleSubmit(Submit)}>
@@ -85,9 +93,7 @@ const Form: React.FC = () => {
             <Radio value="5">5</Radio>
           </Stack>
         </RadioGroup>
-        <Button type="submit" onClick={Toast}>
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </VStack>
     </form>
   );
