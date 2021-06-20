@@ -21,6 +21,7 @@ const Form: React.FC = () => {
   const { register, handleSubmit } = useForm();
   const [alert, setAlert] = useState("1");
   const { setStatus } = useContext(StatusContext);
+
   const Submit = async (data: Data) => {
     data.alert = parseInt(alert);
     const success: boolean = await postStatus(data);
@@ -31,23 +32,24 @@ const Form: React.FC = () => {
       console.log("status", status);
     }
   };
+
   return (
     <form onSubmit={handleSubmit(Submit)}>
       <VStack spacing={4} pt={4}>
         <Input
-          width="50vw"
+          width={{ lg: "50vw", sm: "60vw" }}
           id="messsage"
           placeholder="message"
           {...register("message")}
         />
         <Input
-          width="50vw"
+          width={{ lg: "50vw", sm: "60vw" }}
           id="pass"
           type="password"
           placeholder="password"
           {...register("pass")}
         />
-        <RadioGroup onChange={setAlert} value={alert}>
+        <RadioGroup onChange={setAlert} value={alert} py={2}>
           <Stack direction="row" spacing="2vw">
             <Radio value="1">1</Radio>
             <Radio value="2">2</Radio>
