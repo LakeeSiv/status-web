@@ -6,6 +6,7 @@ import {
   RadioGroup,
   Stack,
   Radio,
+  useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { postStatus } from "../api/api";
@@ -21,15 +22,35 @@ const Form: React.FC = () => {
   const { register, handleSubmit } = useForm();
   const [alert, setAlert] = useState("1");
   const { setStatus } = useContext(StatusContext);
+  const [success, setSuccess] = useState<boolean>(false);
+  const toast = useToast();
+
+  const Toast = () => {
+    if (success) {
+      return toast({
+        title: "Success",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+    } else {
+      return toast({
+        title: "Failed",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
 
   const Submit = async (data: Data) => {
     data.alert = parseInt(alert);
     const success: boolean = await postStatus(data);
-    console.log(success);
+
+    setSuccess(success);
     const status: status = { id: 1, message: data.message, alert: data.alert };
     if (success) {
       setStatus(status);
-      console.log("status", status);
     }
   };
 
@@ -64,7 +85,9 @@ const Form: React.FC = () => {
             <Radio value="5">5</Radio>
           </Stack>
         </RadioGroup>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" onClick={Toast}>
+          Submit
+        </Button>
       </VStack>
     </form>
   );
