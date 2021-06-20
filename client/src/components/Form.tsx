@@ -48,7 +48,7 @@ const Form: React.FC = () => {
           {...register("pass")}
         />
         <RadioGroup onChange={setAlert} value={alert}>
-          <Stack direction="row" spacing={10}>
+          <Stack direction="row" spacing="2vw">
             <Radio value="1">1</Radio>
             <Radio value="2">2</Radio>
             <Radio value="3">3</Radio>
