@@ -3,7 +3,6 @@ import React from "react";
 import { useContext, useEffect } from "react";
 import { getStatus } from "../api/api";
 import { VStack, Box, useColorMode } from "@chakra-ui/react";
-import ThemePicker from "./ThemePicker";
 import StatusContext from "../StatusContext";
 
 const Header: React.FC = () => {
