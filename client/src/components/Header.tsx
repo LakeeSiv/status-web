@@ -19,15 +19,16 @@ const Header: React.FC = () => {
       <VStack>
         <Box>
           <Text
-            fontSize="4xl"
+            fontSize="3xl"
             fontWeight="bold"
             color={
               colorMode === "dark"
                 ? "red." + status.alert * 2 + "00"
                 : "pink." + status.alert * 2 + "00"
             }
+            mb={4}
           >
-            Currently : {status.message}, {status.alert}
+            {status.message}
           </Text>
         </Box>
       </VStack>
