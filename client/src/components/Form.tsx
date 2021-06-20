@@ -49,7 +49,12 @@ const Form: React.FC = () => {
           placeholder="password"
           {...register("pass")}
         />
-        <RadioGroup onChange={setAlert} value={alert} py={2}>
+        <RadioGroup
+          onChange={setAlert}
+          value={alert}
+          py={2}
+          textColor="gray.100"
+        >
           <Stack direction="row" spacing="2vw">
             <Radio value="1">1</Radio>
             <Radio value="2">2</Radio>
