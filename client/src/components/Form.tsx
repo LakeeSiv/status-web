@@ -41,6 +41,7 @@ const Form: React.FC = () => {
           id="messsage"
           placeholder="message"
           {...register("message")}
+          autoComplete="off"
         />
         <Input
           width={{ lg: "50vw", sm: "60vw" }}
