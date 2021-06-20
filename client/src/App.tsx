@@ -7,7 +7,11 @@ import ThemePicker from "./components/ThemePicker";
 import { useColorMode } from "@chakra-ui/color-mode";
 
 const App: FC = () => {
-  const [status, setStatus] = useState({ id: 1, message: "Unknown", alert: 0 });
+  const [status, setStatus] = useState({
+    id: 1,
+    message: "Fetching ...",
+    alert: 0,
+  });
   const { colorMode } = useColorMode();
 
   return (
