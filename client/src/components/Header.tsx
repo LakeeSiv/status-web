@@ -17,16 +17,17 @@ const Header: React.FC = () => {
   return (
     <div>
       <VStack>
-        <Box>
+        <Box width={"50vw"}>
           <Text
-            fontSize="3xl"
+            fontSize="4xl"
             fontWeight="bold"
             color={
               colorMode === "dark"
-                ? "red." + status.alert * 2 + "00"
-                : "pink." + status.alert * 2 + "00"
+                ? "red." + status.alert * 1 + "00"
+                : "pink." + status.alert * 1 + "00"
             }
             mb={4}
+            textAlign="center"
           >
             {status.message}
           </Text>
